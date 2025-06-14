@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasi Padang Pincuran Tujuah</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="nav-logo">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <span class="nav-title">Nasi Padang Pincuran Tujuah</span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Beranda</a>
+                <a href="#menu" class="nav-link">Menu</a>
+                <a href="#about" class="nav-link">Tentang Kami</a>
+                <a href="#contact" class="nav-link">Kontak</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="search-btn" onclick="toggleSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="cart-btn" onclick="openCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-image"></div>
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Nasi Padang<br>Pincuran Tujuah</h1>
+                <p class="hero-subtitle">Komitmen kami terhadap inovasi produk dan memuaskan selera konsumen telah menghasilkan makanan yang lezat, rasa khas nasi Padang yang autentik</p>
+                <p class="hero-quote">"lamak ba urang katuju dek Awak"</p>
+                
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="scrollToMenu()">
+                        <i class="fas fa-utensils"></i>
+                        Lihat Menu
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-phone"></i>
+                        Hubungi Kami
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Pelanggan Puas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Menu Spesial</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5★</div>
+                <div class="stat-label">Rating</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Cari menu favorit Anda..." onkeyup="filterProducts()">
+                <button onclick="toggleSearch()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="search-filters">
+                <select id="priceFilter" onchange="filterProducts()">
+                    <option value="">Semua Harga</option>
+                    <option value="0-20000">Rp 0 - 20.000</option>
+                    <option value="20000-30000">Rp 20.000 - 30.000</option>
+                    <option value="30000-40000">Rp 30.000+</option>
+                </select>
+                <select id="categoryFilter" onchange="filterProducts()">
+                    <option value="">Semua Kategori</option>
+                    <option value="daging">Daging</option>
+                    <option value="ayam">Ayam</option>
+                    <option value="ikan">Ikan</option>
+                    <option value="sayur">Sayuran</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Menu Spesial Kami</h2>
+                <p class="section-subtitle">Pilihan terbaik hidangan khas Padang yang autentik</p>
+            </div>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- Menu Product Item -->
+<div class="product-card" data-price="25000" data-category="daging">
+    <img src="images/RENDANG.jpg" alt="Rendang" class="product-image">
+    <h3 class="product-name">Rendang</h3>
+    <p class="product-desc">Daging sapi pilihan dimasak dengan rempah khas Minang.</p>
+    <div class="product-footer">
+        <span class="product-price">Rp 25.000</span>
+        <button class="btn btn-sm" onclick="addToCart('Rendang', 25000)">
+            <i class="fas fa-plus"></i> Tambah
+        </button>
+    </div>
+</div>
+
+<div class="product-card" data-price="20000" data-category="ayam">
+    <img src="images/AYAM POP.jpg" alt="Ayam Pop" class="product-image">
+    <h3 class="product-name">Ayam Pop</h3>
+    <p class="product-desc">Ayam empuk yang dimasak dengan cara khas Minang, gurih dan lezat.</p>
+    <div class="product-footer">
+        <span class="product-price">Rp 20.000</span>
+        <button class="btn btn-sm" onclick="addToCart('Ayam Pop', 20000)">
+            <i class="fas fa-plus"></i> Tambah
+        </button>
+    </div>
+</div>
+
+<div class="product-card" data-price="15000" data-category="sayur">
+    <img src="images/.jpg" alt="Sayur Nangka" class="product-image">
+    <h3 class="product-name">Sayur Nangka</h3>
+    <p class="product-desc">Sayur khas Minang yang kaya rasa dan cocok dipadukan dengan menu lainnya.</p>
+    <div class="product-footer">
+        <span class="product-price">Rp 15.000</span>
+        <button class="btn btn-sm" onclick="addToCart('Sayur Nangka', 15000)">
+            <i class="fas fa-plus"></i> Tambah
+        </button>
+    </div>
+</div>
+
+<div class="product-card" data-price="18000" data-category="ikan">
+    <img src="images/ikan-bakar.jpg" alt="Ikan Bakar" class="product-image">
+    <h3 class="product-name">Ikan Bakar</h3>
+    <p class="product-desc">Ikan bakar bumbu khas Padang yang menggugah selera.</p>
+    <div class="product-footer">
+        <span class="product-price">Rp 18.000</span>
+        <button class="btn btn-sm" onclick="addToCart('Ikan Bakar', 18000)">
+            <i class="fas fa-plus"></i> Tambah
+        </button>
+    </div>
+</div>
+
+            </div>
+            
+            <div class="load-more-container">
+                <button class="btn btn-outline" id="loadMoreBtn" onclick="loadMoreProducts()">
+                    <i class="fas fa-plus"></i>
+                    Lihat Menu Lainnya
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="about-title">Tentang Nasi Padang Pincuran Tujuah</h2>
+                    
+                    <div class="about-items">
+                        <div class="about-item">
+                            <div class="about-icon">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <div class="about-text">
+                                <h3>Latar Belakang</h3>
+                                <p>Nasi padang adalah nasi putih yang disajikan dengan berbagai macam lauk-pauk khas Minangkabau, Indonesia.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-item">
+                            <div class="about-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="about-text">
+                                <h3>Visi Kami</h3>
+                                <p>Menjadi perusahaan kuliner dengan menu dan pelayanan ala Minang terbesar serta menjadi simbol bisnis etnik masyarakat Minang di dunia.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-item">
+                            <div class="about-icon">
+                                <i class="fas fa-target"></i>
+                            </div>
+                            <div class="about-text">
+                                <h3>Misi Kami</h3>
+                                <p>Menghasilkan produk makanan khas dengan cita rasa asli Minang dan memberikan pelayanan terbaik.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-utensils"></i>
+                        <p>Hidangan Nasi Padang Autentik</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Mengapa Memilih Kami?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Pengiriman Cepat</h3>
+                    <p>Makanan sampai dalam kondisi hangat dan segar</p>
+                </div>
+                <div class="feature-card">  
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Kualitas Terjamin</h3>
+                    <p>Menggunakan bahan-bahan segar dan rempah pilihan</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Layanan 24/7</h3>
+                    <p>Customer service siap membantu kapan saja</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Pembayaran Aman</h3>
+                    <p>Transaksi dilindungi dengan enkripsi terbaik</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Keranjang Belanja</h2>
+                <button class="modal-close" onclick="closeCart()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems" class="cart-items"></div>
+                <div class="cart-summary">
+                    <div class="cart-total" id="cartTotal">Total: Rp 0</div>
+                    <button class="btn btn-primary btn-block" onclick="checkout()">
+                        <i class="fas fa-credit-card"></i>
+                        Checkout Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Nasi Padang Pincuran Tujuah</h3>
+                    <p>Melayani dengan sepenuh hati untuk memberikan pengalaman kuliner Minang yang autentik.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="#menu">Makanan Utama</a></li>
+                        <li><a href="#menu">Sayuran</a></li>
+                        <li><a href="#menu">Minuman</a></li>
+                        <li><a href="#menu">Paket Hemat</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Layanan</h4>
+                    <ul>
+                        <li><a href="#">Delivery</a></li>
+                        <li><a href="#">Catering</a></li>
+                        <li><a href="#">Reservasi</a></li>
+                        <li><a href="#">Bantuan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontak</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> 0812-3456-7890</p>
+                        <p><i class="fas fa-envelope"></i> info@nasipadangpincurantujuah.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nasi Padang Pincuran Tujuah. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <div class="notification-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="notificationText"></span>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
